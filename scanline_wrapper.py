@@ -3,6 +3,7 @@ from enum import Enum
 
 class PageSize(Enum):
     """Page size."""
+
     A4 = "-a4"
     LEGAL = "-legal"
     LETTER = "-letter"
@@ -10,6 +11,7 @@ class PageSize(Enum):
 
 class FileFormat(Enum):
     """Output file format."""
+
     AUTO = -1
     PDF = None
     TIFF = "-tiff"
@@ -18,6 +20,7 @@ class FileFormat(Enum):
 
 class Color(Enum):
     """Color or monochrome output."""
+
     COLOR = None
     MONOCHROME = "-mono"
 
