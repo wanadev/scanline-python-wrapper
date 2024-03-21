@@ -25,6 +25,7 @@ setup(
             "nox",
             "flake8",
             "black",
+            "pytest",
         ]
     },
 )
