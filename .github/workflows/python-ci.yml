@@ -29,7 +29,7 @@ jobs:
         run: |
           pip install setuptools nox
 
-      - name: "Lint with flake8, Black and codespell"
+      - name: "Lint with flake8 and Black"
         run: |
           python3 -m nox --session lint
 
