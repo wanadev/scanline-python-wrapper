@@ -1,3 +1,4 @@
+import os
 from enum import Enum
 
 
@@ -44,6 +45,16 @@ _FILE_EXT_TO_FORMAT = {
     ".jpg": FileFormat.JPEG,
     ".jpeg": FileFormat.JPEG,
 }
+
+
+def _get_scanline_cmd():
+    """Get the scanline command name or path.
+
+    This can be overided by the ``SCANLINE_CMD`` environment variable.
+
+    :rtype: str
+    """
+    return os.environ.get("SCANLINE_CMD", "scanline")
 
 
 def _check_scanline_available():
