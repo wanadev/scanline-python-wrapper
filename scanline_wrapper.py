@@ -1,4 +1,5 @@
 import os
+import subprocess
 from enum import Enum
 
 
@@ -71,7 +72,22 @@ def list_scanners(browsesecs=1, verbose=False):
     :rtype: list(str)
     :returns: the available scanners.
     """
-    raise NotImplementedError()  # TODO
+    command = [_get_scanline_cmd()]
+    command += ["-list"]
+    command += ["-browsesecs", str(browsesecs)]
+    if verbose:
+        command += ["-verbose"]
+
+    # TODO Handle excpetion
+    proc = subprocess.run(command, check=True, capture_output=True)
+
+    scanners = []
+
+    for line in proc.stdout.decode("UTF-8", errors="ignore").split("\n"):
+        if line.startswith("* "):
+            scanners.append(line[2:])
+
+    return scanners
 
 
 def scan_flatbed(
