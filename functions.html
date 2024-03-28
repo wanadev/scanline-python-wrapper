@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Available Functions &mdash; Scanline Python Wrapper 0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=7026087e"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Enums" href="enums.html" />
+    <link rel="prev" title="Environment" href="env.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Scanline Python Wrapper
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="env.html">Environment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Available Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#scanline_wrapper.list_scanners"><code class="docutils literal notranslate"><span class="pre">list_scanners()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scanline_wrapper.scan_flatbed"><code class="docutils literal notranslate"><span class="pre">scan_flatbed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Scanline Python Wrapper</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Available Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/functions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="available-functions">
+<h1>Available Functions<a class="headerlink" href="#available-functions" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="scanline_wrapper.list_scanners">
+<span class="sig-prename descclassname"><span class="pre">scanline_wrapper.</span></span><span class="sig-name descname"><span class="pre">list_scanners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browsesecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scanline_wrapper.list_scanners" title="Link to this definition"></a></dt>
+<dd><p>Get a list of available scanners.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scanline_wrapper</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">list_scanners</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">[</span><span class="s1">&#39;HP Color LaserJet MFP M281fdw (035F4A)&#39;</span><span class="p">,</span> <span class="s1">&#39;My other scanner&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>browsesecs</strong> (<em>int</em>) – Specify how long to wait when searching for scanners
+(in seconds, default: <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Increase verbosity of scanline logs (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="exceptions.html#scanline_wrapper.ScanlineExecutableNotFound" title="scanline_wrapper.ScanlineExecutableNotFound"><strong>ScanlineExecutableNotFound</strong></a> – if the scanline app is not installed.</p></li>
+<li><p><strong>subprocess.CalledProcessError</strong> – if something goes wrong while running
+the scanline command.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list(str)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the available scanners.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scanline_wrapper.scan_flatbed">
+<span class="sig-prename descclassname"><span class="pre">scanline_wrapper.</span></span><span class="sig-name descname"><span class="pre">scan_flatbed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scanner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_scanner_exact_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PageSize.A4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">FileFormat.AUTO</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Color.COLOR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browsesecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scanline_wrapper.scan_flatbed" title="Link to this definition"></a></dt>
+<dd><p>Scans a document using the flatbed unit of the scanner.</p>
+<p>Simple example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scanline_wrapper</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">scan_flatbed</span><span class="p">(</span><span class="s2">&quot;./out.tiff&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>More complete example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scanline_wrapper</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">scan_flatbed</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;./out.jpg&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">scanner</span><span class="o">=</span><span class="s2">&quot;HP Color LaserJet MFP M281fdw (035F4A)&quot;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">page_size</span><span class="o">=</span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">PageSize</span><span class="o">.</span><span class="n">LETTER</span><span class="p">,</span>        <span class="c1"># A4, LEGAL or LETTER</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">file_format</span><span class="o">=</span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">FileFormat</span><span class="o">.</span><span class="n">JPEG</span><span class="p">,</span>      <span class="c1"># AUTO, PDF, TIFF or JPEG</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">color</span><span class="o">=</span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">Color</span><span class="o">.</span><span class="n">COLOR</span><span class="p">,</span>                <span class="c1"># COLOR or MONOCHROME</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">resolution</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>                                    <span class="c1"># DPI</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> (<em>str</em><em>,</em><em>pathlib.Path</em>) – The output file path.</p></li>
+<li><p><strong>scanner</strong> (<em>str</em>) – The name of the scanner to use. If not provided, the
+first available scanner will be used (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p></li>
+<li><p><strong>is_scanner_exact_name</strong> (<em>bool</em>) – If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, scanline will try to
+fuzzy-match the scanner name (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p></li>
+<li><p><strong>page_size</strong> (<a class="reference internal" href="enums.html#scanline_wrapper.PageSize" title="scanline_wrapper.PageSize"><em>PageSize</em></a>) – The size of the page to scan (default.
+<code class="docutils literal notranslate"><span class="pre">PageSize.A4</span></code>).</p></li>
+<li><p><strong>file_format</strong> (<a class="reference internal" href="enums.html#scanline_wrapper.FileFormat" title="scanline_wrapper.FileFormat"><em>FileFormat</em></a>) – The output file format. If set to
+<code class="docutils literal notranslate"><span class="pre">FileFormat.AUTO</span></code> the format will be infered from the file extension.
+A <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> will be raised if the file extension does not match a
+supported format. (default: <code class="docutils literal notranslate"><span class="pre">FileFormat.AUTO</span></code>).</p></li>
+<li><p><strong>color</strong> (<a class="reference internal" href="enums.html#scanline_wrapper.Color" title="scanline_wrapper.Color"><em>Color</em></a>) – Select color or monochrome scan (default:
+<code class="docutils literal notranslate"><span class="pre">Color.COLOR</span></code>).</p></li>
+<li><p><strong>resolution</strong> (<em>int</em>) – Specify minimum resolution at which to scan (in dpi,
+default: <code class="docutils literal notranslate"><span class="pre">150</span></code>).</p></li>
+<li><p><strong>browsesecs</strong> (<em>int</em>) – Specify how long to wait when searching for scanners
+(in seconds, default: <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Increase verbosity of scanline logs (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="exceptions.html#scanline_wrapper.ScanlineScannerNotFound" title="scanline_wrapper.ScanlineScannerNotFound"><strong>ScanlineScannerNotFound</strong></a> – if the scanner requested in <code class="docutils literal notranslate"><span class="pre">scanner</span></code>
+cannot be found or if no scanner are found.</p></li>
+<li><p><a class="reference internal" href="exceptions.html#scanline_wrapper.ScanlineInvalidPageSize" title="scanline_wrapper.ScanlineInvalidPageSize"><strong>ScanlineInvalidPageSize</strong></a> – if the given page size is not one from the
+<a class="reference internal" href="enums.html#scanline_wrapper.PageSize" title="scanline_wrapper.PageSize"><code class="xref py py-class docutils literal notranslate"><span class="pre">PageSize</span></code></a> enum.</p></li>
+<li><p><a class="reference internal" href="exceptions.html#scanline_wrapper.ScanlineInvalidFileFormat" title="scanline_wrapper.ScanlineInvalidFileFormat"><strong>ScanlineInvalidFileFormat</strong></a> – if the given file_format is not one from the
+<a class="reference internal" href="enums.html#scanline_wrapper.FileFormat" title="scanline_wrapper.FileFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileFormat</span></code></a> or if the file extension is not recognized when
+file format is set to <a class="reference internal" href="enums.html#scanline_wrapper.FileFormat.AUTO" title="scanline_wrapper.FileFormat.AUTO"><code class="xref py py-attr docutils literal notranslate"><span class="pre">FileFormat.AUTO</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="exceptions.html#scanline_wrapper.ScanlineInvalidColor" title="scanline_wrapper.ScanlineInvalidColor"><strong>ScanlineInvalidColor</strong></a> – if the given page color is not one from the
+<a class="reference internal" href="enums.html#scanline_wrapper.Color" title="scanline_wrapper.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">Color</span></code></a> enum.</p></li>
+<li><p><a class="reference internal" href="exceptions.html#scanline_wrapper.ScanlineExecutableNotFound" title="scanline_wrapper.ScanlineExecutableNotFound"><strong>ScanlineExecutableNotFound</strong></a> – if the scanline app is not installed.</p></li>
+<li><p><a class="reference internal" href="exceptions.html#scanline_wrapper.ScanlineUnknownError" title="scanline_wrapper.ScanlineUnknownError"><strong>ScanlineUnknownError</strong></a> – if scanline has not generated the expected
+output file without returning a specific error.</p></li>
+<li><p><strong>subprocess.CalledProcessError</strong> – if something goes wrong while running
+the scanline command.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="env.html" class="btn btn-neutral float-left" title="Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="enums.html" class="btn btn-neutral float-right" title="Enums" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Wanadev.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
