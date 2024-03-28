@@ -35,7 +35,7 @@ class Color(Enum):
 
 
 class ScanlineException(Exception):
-    pass
+    """Base class for Scanline exceptions."""
 
 
 class ScanlineUnknownError(ScanlineException):
@@ -107,6 +107,12 @@ def _is_scanline_available():
 def list_scanners(browsesecs=1, verbose=False):
     """Get a list of available scanners.
 
+    Example:
+
+    >>> import scanline_wrapper
+    >>> scanline_wrapper.list_scanners()
+    ... ['HP Color LaserJet MFP M281fdw (035F4A)', 'My other scanner']
+
     :param int browsesecs: Specify how long to wait when searching for scanners
         (in seconds, default: ``1``).
     :param bool verbose: Increase verbosity of scanline logs (default: ``False``).
@@ -158,16 +164,33 @@ def scan_flatbed(
 ):
     """Scans a document using the flatbed unit of the scanner.
 
+    Simple example:
+
+    >>> import scanline_wrapper
+    >>> scanline_wrapper.scan_flatbed("./out.tiff")
+
+    More complete example:
+
+    >>> import scanline_wrapper
+    >>> scanline_wrapper.scan_flatbed(
+    >>>     "./out.jpg",
+    >>>     scanner="HP Color LaserJet MFP M281fdw (035F4A)",
+    >>>     page_size=scanline_wrapper.PageSize.LETTER,        # A4, LEGAL or LETTER
+    >>>     file_format=scanline_wrapper.FileFormat.JPEG,      # AUTO, PDF, TIFF or JPEG
+    >>>     color=scanline_wrapper.Color.COLOR,                # COLOR or MONOCHROME
+    >>>     resolution=150,                                    # DPI
+    >>> )
+
     :param str,pathlib.Path output_path: The output file path.
     :param str scanner: The name of the scanner to use. If not provided, the
         first available scanner will be used (default: ``None``).
-    :parma bool is_scanner_exact_name: If set to ``True``, scanline will try to
+    :param bool is_scanner_exact_name: If set to ``True``, scanline will try to
         fuzzy-match the scanner name (default: ``False``).
     :param PageSize page_size: The size of the page to scan (default.
         ``PageSize.A4``).
     :param FileFormat file_format: The output file format. If set to
-    ``FileFormat.AUTO`` the format will be infered from the file extension. A
-        ``ValueError`` will be raised if the file extension does not match a
+        ``FileFormat.AUTO`` the format will be infered from the file extension.
+        A ``ValueError`` will be raised if the file extension does not match a
         supported format. (default: ``FileFormat.AUTO``).
     :param Color color: Select color or monochrome scan (default:
         ``Color.COLOR``).
@@ -182,7 +205,7 @@ def scan_flatbed(
     :raise ScanlineInvalidPageSize: if the given page size is not one from the
         :py:class:`~PageSize` enum.
     :raise ScanlineInvalidFileFormat: if the given file_format is not one from the
-        :py:class:`~FileFormat: or if the file extension is not recognized when
+        :py:class:`~FileFormat` or if the file extension is not recognized when
         file format is set to :py:attr:`FileFormat.AUTO`.
     :raise ScanlineInvalidColor: if the given page color is not one from the
         :py:class:`~Color` enum.
