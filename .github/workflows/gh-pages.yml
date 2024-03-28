@@ -1,0 +1,39 @@
+name: "Build and deploy Github pages"
+
+on:
+  push:
+    branches: master
+
+jobs:
+
+  build-and-deploy:
+
+    name: "Build and deploy Sphinx documentation"
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: "Checkout the repository"
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          submodules: true
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: "Install Python dependencies"
+        run: |
+          pip3 install setuptools nox
+
+      - name: "Build Sphinx Doc"
+        run: |
+          nox -s gendoc
+
+      - name: "Deploy Github Pages"
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/html/
