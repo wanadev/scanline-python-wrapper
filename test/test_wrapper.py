@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 import scanline_wrapper
 
 
@@ -33,3 +35,85 @@ class Test_list_scanner:
         )
         scanners = scanline_wrapper.list_scanners()
         assert len(scanners) == 0
+
+
+class Test_scan_flatbed:
+
+    def test_page_size(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-nop.sh").as_posix(),
+        )
+
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", page_size=scanline_wrapper.PageSize.A4
+        )
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", page_size=scanline_wrapper.PageSize.A4.value
+        )
+        with pytest.raises(scanline_wrapper.ScanlineInvalidPageSize):
+            scanline_wrapper.scan_flatbed(tmp_path / "out.jpg", page_size="foo")
+
+    def test_file_format(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-nop.sh").as_posix(),
+        )
+
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", file_format=scanline_wrapper.FileFormat.TIFF
+        )
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", file_format=scanline_wrapper.FileFormat.TIFF.value
+        )
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", file_format=scanline_wrapper.FileFormat.PDF
+        )
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", file_format=scanline_wrapper.FileFormat.PDF.value
+        )
+        with pytest.raises(scanline_wrapper.ScanlineInvalidFileFormat):
+            scanline_wrapper.scan_flatbed(tmp_path / "out.jpg", file_format="foo")
+
+    def test_file_format_auto(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-nop.sh").as_posix(),
+        )
+
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", file_format=scanline_wrapper.FileFormat.AUTO
+        )
+        with pytest.raises(scanline_wrapper.ScanlineInvalidFileFormat):
+            scanline_wrapper.scan_flatbed(
+                tmp_path / "out.png", file_format=scanline_wrapper.FileFormat.AUTO
+            )
+
+    def test_color(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-nop.sh").as_posix(),
+        )
+
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", color=scanline_wrapper.Color.MONOCHROME
+        )
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.jpg", color=scanline_wrapper.Color.MONOCHROME.value
+        )
+        with pytest.raises(scanline_wrapper.ScanlineInvalidColor):
+            scanline_wrapper.scan_flatbed(tmp_path / "out.jpg", color="foo")
+
+    def test_output_file_is_created(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-nop.sh").as_posix(),
+        )
+
+        scanline_wrapper.scan_flatbed(tmp_path / "out.jpeg")
+        assert (tmp_path / "out.jpeg").exists()
+
+        scanline_wrapper.scan_flatbed(
+            tmp_path / "out.xxx", file_format=scanline_wrapper.FileFormat.TIFF
+        )
+        assert (tmp_path / "out.xxx").exists()
