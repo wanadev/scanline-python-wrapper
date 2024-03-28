@@ -2,8 +2,12 @@ import os
 import subprocess
 import tempfile
 import shutil
+import logging
 from enum import Enum
 from pathlib import Path
+
+
+logger = logging.getLogger("scanline_wrapper")
 
 
 class PageSize(Enum):
@@ -114,6 +118,9 @@ def list_scanners(browsesecs=1, verbose=False):
     :rtype: list(str)
     :returns: the available scanners.
     """
+    if verbose:
+        logging.basicConfig(level=logging.INFO)
+
     if not _is_scanline_available():
         raise ScanlineExecutableNotFound(
             "The scanline command was not found. Is scanline installed?"
@@ -126,7 +133,9 @@ def list_scanners(browsesecs=1, verbose=False):
         command += ["-verbose"]
 
     # TODO Handle exceptions
+    logger.info("Running command: %s" % " ".join(command))
     proc = subprocess.run(command, check=True, capture_output=True)
+    logger.info(proc.stdout.decode("UTF-8", errors="ignore"))
 
     scanners = []
 
@@ -188,6 +197,9 @@ def scan_flatbed(
         raise ScanlineExecutableNotFound(
             "The scanline command was not found. Is scanline installed?"
         )
+
+    if verbose:
+        logging.basicConfig(level=logging.INFO)
 
     # Normalize path
     output_path = Path(output_path).absolute()
@@ -261,7 +273,9 @@ def scan_flatbed(
 
         # Call scanline
         # TODO Handle exceptions
+        logger.info("Running command: %s" % " ".join(command))
         proc = subprocess.run(command, check=True, capture_output=True)
+        logger.info(proc.stdout.decode("UTF-8", errors="ignore"))
 
         for line in proc.stdout.decode("UTF-8", errors="ignore").split("\n"):
             if line == "No scanner was found.":
