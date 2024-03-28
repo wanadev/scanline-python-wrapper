@@ -112,8 +112,8 @@ def list_scanners(browsesecs=1, verbose=False):
     :param bool verbose: Increase verbosity of scanline logs (default: ``False``).
 
     :raise ScanlineExecutableNotFound: if the scanline app is not installed.
-    :raise ScanlineUnknownError: if an unexpected error occured when running
-        scanline.
+    :raise subprocess.CalledProcessError: if something goes wrong while running
+        the scanline command.
 
     :rtype: list(str)
     :returns: the available scanners.
@@ -132,7 +132,6 @@ def list_scanners(browsesecs=1, verbose=False):
     if verbose:
         command += ["-verbose"]
 
-    # TODO Handle exceptions
     logger.info("Running command: %s" % " ".join(command))
     proc = subprocess.run(command, check=True, capture_output=True)
     logger.info(proc.stdout.decode("UTF-8", errors="ignore"))
@@ -190,6 +189,8 @@ def scan_flatbed(
     :raise ScanlineExecutableNotFound: if the scanline app is not installed.
     :raise ScanlineUnknownError: if scanline has not generated the expected
         output file without returning a specific error.
+    :raise subprocess.CalledProcessError: if something goes wrong while running
+        the scanline command.
 
     :rtype: None
     """
@@ -272,7 +273,6 @@ def scan_flatbed(
         command += ["-name", tmp_output_path.with_suffix("").name]
 
         # Call scanline
-        # TODO Handle exceptions
         logger.info("Running command: %s" % " ".join(command))
         proc = subprocess.run(command, check=True, capture_output=True)
         logger.info(proc.stdout.decode("UTF-8", errors="ignore"))

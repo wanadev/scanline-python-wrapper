@@ -1,3 +1,4 @@
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -64,6 +65,14 @@ class Test_list_scanner:
             (Path(__file__).parent / "mock" / "scanline-not-exists").as_posix(),
         )
         with pytest.raises(scanline_wrapper.ScanlineExecutableNotFound):
+            scanline_wrapper.list_scanners()
+
+    def test_scanline_unknown_error(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-cmd-error.sh").as_posix(),
+        )
+        with pytest.raises(subprocess.CalledProcessError):
             scanline_wrapper.list_scanners()
 
 
@@ -163,4 +172,12 @@ class Test_scan_flatbed:
             (Path(__file__).parent / "mock" / "scanline-not-exists").as_posix(),
         )
         with pytest.raises(scanline_wrapper.ScanlineExecutableNotFound):
+            scanline_wrapper.scan_flatbed(tmp_path / "out.jpg")
+
+    def test_scanline_unknown_error(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-cmd-error.sh").as_posix(),
+        )
+        with pytest.raises(subprocess.CalledProcessError):
             scanline_wrapper.scan_flatbed(tmp_path / "out.jpg")
