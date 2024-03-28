@@ -117,3 +117,12 @@ class Test_scan_flatbed:
             tmp_path / "out.xxx", file_format=scanline_wrapper.FileFormat.TIFF
         )
         assert (tmp_path / "out.xxx").exists()
+
+    def test_scanner_not_found(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-no-scanner.sh").as_posix(),
+        )
+
+        with pytest.raises(scanline_wrapper.ScanlineScannerNotFound):
+            scanline_wrapper.scan_flatbed(tmp_path / "out.jpg", scanner="XXXXXXXX")

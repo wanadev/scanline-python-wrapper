@@ -239,7 +239,11 @@ def scan_flatbed(
 
         # Call scanline
         # TODO Handle exceptions
-        subprocess.run(command, check=True, capture_output=True)
+        proc = subprocess.run(command, check=True, capture_output=True)
+
+        for line in proc.stdout.decode("UTF-8", errors="ignore").split("\n"):
+            if line == "No scanner was found.":
+                raise ScanlineScannerNotFound("No scanner was found.")
 
         # Check output file was created
         if not tmp_output_path.exists():
