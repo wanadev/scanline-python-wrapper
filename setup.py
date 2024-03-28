@@ -26,6 +26,8 @@ setup(
             "flake8",
             "black",
             "pytest",
+            "sphinx",
+            "sphinx-rtd-theme",
         ]
     },
 )
