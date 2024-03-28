@@ -16,6 +16,28 @@ class Test__get_scanline_cmd:
         assert scanline_wrapper._get_scanline_cmd() == "foobar"
 
 
+class Test__is_scanline_available:
+
+    def test_with_command_not_available(self, monkeypatch):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-not-exists").as_posix(),
+        )
+        assert scanline_wrapper._is_scanline_available() is False
+
+    def test_with_command_path(self, monkeypatch):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-nop.sh").as_posix(),
+        )
+        assert scanline_wrapper._is_scanline_available() is True
+
+    def test_with_command_in_path(self, monkeypatch):
+        monkeypatch.setenv("PATH", (Path(__file__).parent / "mock").as_posix())
+        monkeypatch.setenv("SCANLINE_CMD", "scanline-nop.sh")
+        assert scanline_wrapper._is_scanline_available() is True
+
+
 class Test_list_scanner:
 
     def test_list_scanner_with_2_scanners(self, monkeypatch):
@@ -35,6 +57,14 @@ class Test_list_scanner:
         )
         scanners = scanline_wrapper.list_scanners()
         assert len(scanners) == 0
+
+    def test_scanline_not_available(self, monkeypatch):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-not-exists").as_posix(),
+        )
+        with pytest.raises(scanline_wrapper.ScanlineExecutableNotFound):
+            scanline_wrapper.list_scanners()
 
 
 class Test_scan_flatbed:
@@ -126,3 +156,11 @@ class Test_scan_flatbed:
 
         with pytest.raises(scanline_wrapper.ScanlineScannerNotFound):
             scanline_wrapper.scan_flatbed(tmp_path / "out.jpg", scanner="XXXXXXXX")
+
+    def test_scanline_not_available(self, monkeypatch, tmp_path):
+        monkeypatch.setenv(
+            "SCANLINE_CMD",
+            (Path(__file__).parent / "mock" / "scanline-not-exists").as_posix(),
+        )
+        with pytest.raises(scanline_wrapper.ScanlineExecutableNotFound):
+            scanline_wrapper.scan_flatbed(tmp_path / "out.jpg")

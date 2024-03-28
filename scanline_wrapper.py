@@ -84,8 +84,20 @@ def _get_scanline_cmd():
     return os.environ.get("SCANLINE_CMD", "scanline")
 
 
-def _check_scanline_available():
-    raise NotImplementedError()  # TODO
+def _is_scanline_available():
+    """Checks if the scanline command is available.
+
+    :rtype: bool
+    """
+    cmd = _get_scanline_cmd()
+    if os.path.isfile(cmd) and os.access(cmd, os.X_OK):
+        return True
+    if "PATH" in os.environ:
+        for path in os.environ["PATH"].split(":"):
+            cmd_path = os.path.join(path, cmd)
+            if os.path.isfile(cmd_path) and os.access(cmd_path, os.X_OK):
+                return True
+    return False
 
 
 def list_scanners(browsesecs=1, verbose=False):
@@ -102,6 +114,11 @@ def list_scanners(browsesecs=1, verbose=False):
     :rtype: list(str)
     :returns: the available scanners.
     """
+    if not _is_scanline_available():
+        raise ScanlineExecutableNotFound(
+            "The scanline command was not found. Is scanline installed?"
+        )
+
     command = [_get_scanline_cmd()]
     command += ["-list"]
     command += ["-browsesecs", str(browsesecs)]
@@ -167,6 +184,11 @@ def scan_flatbed(
 
     :rtype: None
     """
+    if not _is_scanline_available():
+        raise ScanlineExecutableNotFound(
+            "The scanline command was not found. Is scanline installed?"
+        )
+
     # Normalize path
     output_path = Path(output_path).absolute()
 
