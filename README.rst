@@ -103,6 +103,13 @@ To build the Sphinx documentation, run::
     nox -s gendoc
 
 
+License
+-------
+
+* This wrapper is licensed under the `BSD 3 Clause license <https://github.com/wanadev/scanline-python-wrapper/blob/master/LICENSE>`__
+* The Scanline CLI tool is licensed under the `MIT license <https://github.com/klep/scanline/blob/master/LICENSE>`__
+
+
 Changelog
 ---------
 
