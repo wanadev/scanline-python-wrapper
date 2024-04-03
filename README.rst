@@ -116,8 +116,13 @@ Changelog
 
 * **[NEXT]** (changes on ``master``, but not released yet):
 
-  * Nothing yet :)
+  * Nothing yet ;)
 
+* **v1.0.0:**
+
+  * First release
+  * feat: List available scanners
+  * feat: Scan a document using a flatbed scanner
 
 
 .. _scanline: https://github.com/klep/scanline

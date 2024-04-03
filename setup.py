@@ -12,7 +12,7 @@ if os.path.isfile("README.rst"):
 
 setup(
     name="scanline-python-wrapper",
-    version="0.0.0",
+    version="1.0.0",
     description="Python wrapper for the scanline CLI scanner tool for macOS",
     license="BSD 3 Clause",
     long_description=long_description,
