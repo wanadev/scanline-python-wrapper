@@ -1,6 +1,8 @@
 Scanline Python Wrapper
 =======================
 
+|Github| |Discord| |PYPI Version| |Build Status| |Black| |License|
+
 Scanline Python Wrapper is a wrapper library for the scanline_ CLI tool.
 
 Scanline is a CLI tool to scan documents on macOS through Apple's Image Capture
@@ -52,7 +54,7 @@ Scan a document (more options):
    >>>     resolution=150,                                    # DPI
    >>> )
 
-Compelte documentation:
+Complete documentation:
 
 * https://wanadev.github.io/scanline-python-wrapper/
 
@@ -60,8 +62,7 @@ Compelte documentation:
 Development
 -----------
 
-To run development commands, you must install `Nox <https://nox.thea.codes>`__
-first::
+To run development commands, you must install `Nox <https://nox.thea.codes>`__ first::
 
     pip install nox
 
@@ -70,7 +71,7 @@ Lint
 ~~~~
 
 
-To lint the code, run the following command (from virtualenv)::
+To lint the code, run the following command::
 
     nox -s lint
 
@@ -120,3 +121,16 @@ Changelog
 
 
 .. _scanline: https://github.com/klep/scanline
+
+.. |Github| image:: https://img.shields.io/github/stars/wanadev/scanline-python-wrapper?label=Github&logo=github
+   :target: https://github.com/wanadev/scanline-python-wrapper
+.. |Discord| image:: https://img.shields.io/badge/chat-Discord-8c9eff?logo=discord&logoColor=ffffff
+   :target: https://discord.gg/BmUkEdMuFp
+.. |PYPI Version| image:: https://img.shields.io/pypi/v/scanline-python-wrapper.svg
+   :target: https://pypi.python.org/pypi/scanline-python-wrapper
+.. |Build Status| image:: https://github.com/wanadev/scanline-python-wrapper/actions/workflows/python-ci.yml/badge.svg
+   :target: https://github.com/wanadev/scanline-python-wrapper/actions
+.. |Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://black.readthedocs.io/en/stable/
+.. |License| image:: https://img.shields.io/pypi/l/scanline-python-wrapper.svg
+   :target: https://github.com/wanadev/scanline-python-wrapper/blob/master/LICENSE
