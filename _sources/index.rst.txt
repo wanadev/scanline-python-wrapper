@@ -5,6 +5,7 @@ Welcome to Scanline Python Wrapper's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   ./install.rst
    ./env.rst
    ./functions.rst
    ./enums.rst
