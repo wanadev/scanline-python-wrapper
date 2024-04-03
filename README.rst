@@ -15,9 +15,9 @@ README:
 
 * https://github.com/klep/scanline?tab=readme-ov-file#installing-scanline
 
-Then install ``scanline-python-wrapper``::
+Then install ``scanline-python-wrapper`` from PyPI::
 
-    TODO
+    pip install scanline-python-wrapper
 
 
 Usage
@@ -52,12 +52,23 @@ Scan a document (more options):
    >>>     resolution=150,                                    # DPI
    >>> )
 
+Compelte documentation:
+
+* https://wanadev.github.io/scanline-python-wrapper/
+
 
 Development
 -----------
 
+To run development commands, you must install `Nox <https://nox.thea.codes>`__
+first::
+
+    pip install nox
+
+
 Lint
 ~~~~
+
 
 To lint the code, run the following command (from virtualenv)::
 
@@ -66,6 +77,30 @@ To lint the code, run the following command (from virtualenv)::
 To fix codding style, run::
 
     nox -s black_fix
+
+
+Run tests
+~~~~~~~~~
+
+To run the tests, use::
+
+    nox -s test
+
+You can use following commands to run the tests only on a certain Python version (the corresponding Python interpreter must be installed on your machine)::
+
+    nox -s test-3.8
+    nox -s test-3.9
+    nox -s test-3.10
+    nox -s test-3.11
+    nox -s test-3.12
+
+
+Build the documentation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To build the Sphinx documentation, run::
+
+    nox -s gendoc
 
 
 Changelog
