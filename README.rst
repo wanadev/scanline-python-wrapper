@@ -31,7 +31,7 @@ List scanners:
 
    >>> import scanline_wrapper
    >>> scanline_wrapper.list_scanners()
-   ... ['HP Color LaserJet MFP M281fdw (035F4A)', 'My other scanner']
+   ['HP Color LaserJet MFP M281fdw (035F4A)', 'My other scanner']
 
 Scan a document:
 
