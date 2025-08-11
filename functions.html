@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Available Functions &mdash; Scanline Python Wrapper 1.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
@@ -86,7 +86,7 @@
 <span class="sig-prename descclassname"><span class="pre">scanline_wrapper.</span></span><span class="sig-name descname"><span class="pre">list_scanners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browsesecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scanline_wrapper.list_scanners" title="Link to this definition"></a></dt>
 <dd><p>Get a list of available scanners.</p>
 <p>Example:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scanline_wrapper</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scanline_wrapper</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">list_scanners</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">[</span><span class="s1">&#39;HP Color LaserJet MFP M281fdw (035F4A)&#39;</span><span class="p">,</span> <span class="s1">&#39;My other scanner&#39;</span><span class="p">]</span>
 </pre></div>
@@ -120,12 +120,12 @@ the scanline command.</p></li>
 <span class="sig-prename descclassname"><span class="pre">scanline_wrapper.</span></span><span class="sig-name descname"><span class="pre">scan_flatbed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scanner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_scanner_exact_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PageSize.A4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">FileFormat.AUTO</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Color.COLOR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browsesecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scanline_wrapper.scan_flatbed" title="Link to this definition"></a></dt>
 <dd><p>Scans a document using the flatbed unit of the scanner.</p>
 <p>Simple example:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scanline_wrapper</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scanline_wrapper</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">scan_flatbed</span><span class="p">(</span><span class="s2">&quot;./out.tiff&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>More complete example:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scanline_wrapper</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scanline_wrapper</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scanline_wrapper</span><span class="o">.</span><span class="n">scan_flatbed</span><span class="p">(</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="s2">&quot;./out.jpg&quot;</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">scanner</span><span class="o">=</span><span class="s2">&quot;HP Color LaserJet MFP M281fdw (035F4A)&quot;</span><span class="p">,</span>
