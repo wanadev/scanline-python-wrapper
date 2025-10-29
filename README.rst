@@ -89,11 +89,11 @@ To run the tests, use::
 
 You can use following commands to run the tests only on a certain Python version (the corresponding Python interpreter must be installed on your machine)::
 
-    nox -s test-3.9
     nox -s test-3.10
     nox -s test-3.11
     nox -s test-3.12
     nox -s test-3.13
+    nox -s test-3.14
 
 
 Build the documentation
