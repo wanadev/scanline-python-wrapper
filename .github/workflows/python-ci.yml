@@ -27,7 +27,7 @@ jobs:
 
       - name: "Install Python dependencies"
         run: |
-          pip install setuptools nox
+          pip install nox
 
       - name: "Lint with flake8 and Black"
         run: |
