@@ -6,7 +6,6 @@ import logging
 from enum import Enum
 from pathlib import Path
 
-
 logger = logging.getLogger("scanline_wrapper")
 
 
